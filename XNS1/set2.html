@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-AICodeX - Event</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #1a1a2e);
+            color: #f4f4f4;
+            overflow-x: hidden;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(90deg, #0f0c29, #302b63, #2575fc);
+            color: white;
+            padding: 1rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #3a3a3a;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeInDown 2s ease;
+            color: #00aaff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            animation: fadeInUp 2s ease;
+            color: #ddd;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 1.3rem 2rem;
+            background: url('https://source.unsplash.com/1600x900/?coding,technology') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1;
+        }
+
+        .hero h1,
+        .hero p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            animation: zoomIn 2s ease;
+            color: #00aaff;
+            /* margin-top: 1rem; */
+            z-index: 2;
+        }
+
+
+        
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        #quiz-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .options label {
+            display: block;
+            padding: 10px;
+            border: 1px solid #444;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .options input {
+            display: none;
+        }
+
+        .options label:hover,
+        .options input:checked+label {
+            background: #00aaff;
+            color: white;
+            border-color: #00aaff;
+        }
+
+        .submit-btn {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background: #00aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            font-weight: bold;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .correct {
+            background: #28a745;
+            color: white;
+        }
+
+        .incorrect {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #101010;
+            color: #b8c6db;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animation for Events */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="EVENTS.html" style="color: inherit; text-decoration: none;">EVENT of X-AICodeX</a></h1>
+    </header>
+
+    <section class="hero">
+        <h1>SET - 2</h1>
+
+    </section>
+
+    <div id="quiz-container"></div>
+
+    <script>
+        const questions = [
+        
+  { question: "1. What is the full form of OOP?", options: ["A) Object-Oriented Programming", "B) Operator Overloaded Programming", "C) Optional Object Programming", "D) Object Operation Process"], correctAnswer: "a" },
+
+  { question: "2. Which of the following is a valid C variable name?", options: ["A) 2variable", "B) variable_1", "C) int", "D) #define"], correctAnswer: "b" },
+
+  { question: "3. Which of the following is used to input a string in C?", options: ["A) gets()", "B) scanf()", "C) printf()", "D) puts()"], correctAnswer: "b" },
+
+  { question: "4. What is the size of an int data type in C (typically)?", options: ["A) 2 bytes", "B) 4 bytes", "C) 8 bytes", "D) Depends on the system"], correctAnswer: "d" },
+
+  { question: "5. Which header file is required for using malloc() in C?", options: ["A) stdlib.h", "B) stdio.h", "C) malloc.h", "D) memory.h"], correctAnswer: "a" },
+
+  { question: "6. Which of the following is NOT a valid C++ data type?", options: ["A) int", "B) float", "C) boolean", "D) char"], correctAnswer: "c" },
+
+  { question: "7. How do you declare a pointer in C?", options: ["A) int ptr;", "B) int *ptr;", "C) pointer int ptr;", "D) int ptr*;"], correctAnswer: "b" },
+
+  { question: "8. What will be the output of 5/2 in C?", options: ["A) 2.5", "B) 2", "C) 2.0", "D) 3"], correctAnswer: "b" },
+
+  { question: "9. What is the keyword used to define a class in C++?", options: ["A) struct", "B) class", "C) object", "D) define"], correctAnswer: "b" },
+
+  { question: "10. What is the purpose of a constructor in C++?", options: ["A) To destroy an object", "B) To initialize an object", "C) To allocate memory", "D) To define a function"], correctAnswer: "b" },
+
+  { question: "11. Which feature of OOP allows the same function name to be used for different types?", options: ["A) Encapsulation", "B) Polymorphism", "C) Inheritance", "D) Abstraction"], correctAnswer: "b" },
+
+  { question: "12. What is the default access specifier for members of a class in C++?", options: ["A) public", "B) private", "C) protected", "D) None"], correctAnswer: "b" },
+
+  { question: "13. How do you allocate dynamic memory in C++?", options: ["A) malloc()", "B) calloc()", "C) new", "D) allocate()"], correctAnswer: "c" },
+
+  { question: "14. Which of the following is a valid destructor syntax in C++?", options: ["A) ~ClassName();", "B) ClassName();", "C) ClassName~();", "D) delete ClassName();"], correctAnswer: "a" },
+
+  { question: "15. What is the correct way to create an object in C++?", options: ["A) class obj;", "B) object obj;", "C) ClassName obj;", "D) create obj;"], correctAnswer: "c" },
+
+  { question: "16. What will the following statement do? int *ptr = new int[10];", options: ["A) Allocate memory for 10 integers", "B) Allocate memory for 1 integer", "C) Throw an error", "D) Allocate memory for 10 float values"], correctAnswer: "a" },
+
+  { question: "17. What does the ‘this’ pointer refer to in C++?", options: ["A) The class", "B) The object itself", "C) The function", "D) The parent class"], correctAnswer: "b" },
+
+  { question: "18. What is used to prevent inheritance in C++?", options: ["A) private", "B) protected", "C) final", "D) static"], correctAnswer: "c" },
+
+  { question: "19. Which operator is used to access a member function of a class in C++?", options: ["A) .", "B) ->", "C) :", "D) *"], correctAnswer: "a" },
+
+  { question: "20. What is the output of the following code? int a = 10; int b = a++; cout << b;", options: ["A) 10", "B) 11", "C) 9", "D) Error"], correctAnswer: "a" },
+
+  { question: "21. Which function is used to deallocate memory allocated by malloc()?", options: ["A) delete", "B) free()", "C) clear()", "D) remove()"], correctAnswer: "b" },
+
+  { question: "22. What is an abstract class in C++?", options: ["A) A class with all private members", "B) A class with pure virtual functions", "C) A class without a constructor", "D) A class that cannot be inherited"], correctAnswer: "b" },
+
+  { question: "23. What is the output of cout << 5 + ‘A’; ?", options: ["A) A", "B) 70", "C) 5A", "D) Error"], correctAnswer: "b" },
+
+  { question: "24. What is function overloading in C++?", options: ["A) Defining multiple functions with the same name but different parameters", "B) Using one function inside another", "C) Defining a function outside a class", "D) Calling a function multiple times"], correctAnswer: "a" },
+
+  { question: "25. How do you explicitly call a base class constructor in C++?", options: ["A) base()", "B) : base()", "C) using base()", "D) super()"], correctAnswer: "b" },
+
+  { question: "26. What does the keyword 'virtual' mean in C++?", options: ["A) The function is executed in compile-time", "B) The function can be overridden in derived classes", "C) The function is hidden", "D) The function cannot be inherited"], correctAnswer: "b" },
+
+  { question: "27. What is a copy constructor in C++?", options: ["A) A constructor that initializes an object using another object of the same class", "B) A constructor that copies the code", "C) A constructor that duplicates the class", "D) A constructor that deletes objects"], correctAnswer: "a" },
+
+  { question: "28. Which concept of OOP helps in reusing existing code?", options: ["A) Abstraction", "B) Encapsulation", "C) Inheritance", "D) Polymorphism"], correctAnswer: "c" },
+
+  { question: "29. Which of the following loops is faster in C?", options: ["A) for", "B) while", "C) do-while", "D) All are the same"], correctAnswer: "d" },
+
+  { question: "30. What will happen if you delete the same pointer twice in C++?", options: ["A) Compilation error", "B) Runtime error", "C) Undefined behavior", "D) Memory leak"], correctAnswer: "c" }
+
+
+
+
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function generateQuestion() {
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.innerHTML = "";
+
+            if (currentQuestionIndex >= questions.length) {
+                quizContainer.innerHTML = "<h3>🎉 Quiz Completed! 🎉</h3>";
+                return;
+            }
+
+            const q = questions[currentQuestionIndex];
+
+            quizContainer.innerHTML = `
+            <div class="question">${q.question}</div>
+            <div class="options">
+                ${q.options.map((option, i) => `
+                    <input type="radio" id="q${i}" name="question" value="${String.fromCharCode(97 + i)}">
+                    <label for="q${i}">${option}</label>
+                `).join('')}
+            </div>
+            <button class="submit-btn" onclick="checkAnswer('${q.correctAnswer}')">Submit Answer</button>
+            <div class="feedback" id="feedback"></div>
+        `;
+        }
+
+        function checkAnswer(correctAnswer) {
+            const selected = document.querySelector('input[name="question"]:checked');
+            const feedback = document.getElementById("feedback");
+
+            if (!selected) {
+                alert("Please select an answer!");
+                return;
+            }
+
+            feedback.style.display = "block";
+            if (selected.value === correctAnswer) {
+                feedback.textContent = "✅ Correct!";
+                feedback.classList.add("correct");
+                feedback.classList.remove("incorrect");
+            } else {
+                feedback.textContent = `❌ Incorrect! The correct answer was: ${correctAnswer.toUpperCase()}`;
+                feedback.classList.add("incorrect");
+                feedback.classList.remove("correct");
+            }
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                generateQuestion();
+            }, 1500);
+        }
+
+        window.onload = generateQuestion;
+    </script>
+
+    <footer>
+        <p>&copy; 2025 X-AICodex. DHRUVIL . All Rights Reserved. </p>
+    </footer>
+</body>
+
+</html>

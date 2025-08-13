@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X-AICodex - Members</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #000000, #1a1a2e);
+      color: #f4f4f4;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #0f0c29, #302b63, #2575fc);
+      color: white;
+      padding: 1rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid #3a3a3a;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+      animation: rotate 15s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      animation: fadeInDown 2s ease;
+      color: #00aaff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      animation: fadeInUp 2s ease;
+      color: #ddd;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      background: url('https://source.unsplash.com/1600x900/?coding,technology') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1;
+    }
+
+    .hero h1,
+    .hero .members-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      color: #00aaff;
+    }
+
+    /* Members Section */
+    .members-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(31, 31, 31, 0.85);
+      border-radius: 15px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .members-container .member-card:first-child {
+      grid-column: 1 / -1;
+      margin: 0 auto;
+      max-width: 300px;
+    }
+
+    .member-card {
+
+      background-color: #1f1f1f;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: slideInUp 1s ease-out;
+    }
+
+    @keyframes slideInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .member-card:hover {
+      transform: translateY(-10px);
+      transition: transform 0.3s ease;
+    }
+
+    /* .member-card img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    } */
+    .member-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .member-card img:hover {
+      transform: scale(1.1);
+    }
+
+    .member-details h3 {
+      margin: 10px 0 5px;
+      font-size: 1.5rem;
+      color: #00aaff;
+    }
+
+    .member-details h4 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      color: #00aaff;
+    }
+
+    .member-details p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #b8c6db;
+    }
+
+    /* Footer */
+    footer {
+      background: #101010;
+      color: #b8c6db;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1> <a href="INDEX.html" style="color: inherit; text-decoration: none;">X-AICodeX MANAGED BY </a></h1>
+  </header>
+
+  <section class="hero">
+    <h1>MEMBER </h1>
+    <div class="members-container">
+      <div class="member-card" style="margin-top: 1rem;">
+        <img src="rk-2.png" alt="Member 1">
+        <div class="member-details">
+          <h3>Dhruvil Dave</h3>
+          <p> <strong>MOBILE : 7622937604</strong></p>
+
+          
+
+
+        </div>
+      </div>
+      <!-- <div class="member-card">
+        <img src="pra.jpg" alt="Member 2">
+        <div class="member-details">
+          <h3>Pranav B. Panara</h3>
+
+          <p> <strong>ENROLL : 23BECE30489</strong></p>
+          <p> <strong>MOBILE : 7069358557</strong></p>
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+
+        </div>
+      </div> 
+
+       <div class="member-card">
+        <img src="st.jpg" alt="Member 2">
+        <div class="member-details">
+          <h3> Stuti R. Bakrania</h3>
+
+          <p> <strong>ENROLL : 23BECE30411</strong></p>
+          <p> <strong>MOBILE : 7984841092</strong></p>
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+        </div>
+      </div> 
+
+      <div class="member-card">
+        <img src="om.jpg" alt="Member 2">
+        <div class="member-details">
+          <h3>Om J. Bhisra</h3>
+         
+          <p> <strong>ENROLL : 23BEIT30013</strong></p>
+          <p> <strong>MOBILE : 8511936096</strong></p>
+          <p>BRANCH : <strong>IT</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+        </div>
+      </div>
+
+      <div class="member-card">
+        <img src="d6.jpg" alt="Member 2">
+        <div class="member-details">
+          <h3></h3>
+          
+          <p> <strong>ENROLL : 23BECE30432</strong></p>
+          
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+        </div>
+      </div>
+
+      <div class="member-card">
+        <img src="j.jpg" alt="Portrait of Patel Janish Bharatkumar">
+
+        <div class="member-details">
+          <h3> Janish B. Patel</h3>
+        
+          <p> <strong>ENROLL : 23BECE30525</strong></p>
+          <p> <strong>MOBILE : 7573925111</strong></p>
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+        </div>
+      </div>
+
+      <div class="member-card">
+        <img src="kart.jpg" alt="Member 2">
+        <div class="member-details">
+          <h3> Kartik A. Dave</h3>
+         
+          <p> <strong>ENROLL : 23BECE30433</strong></p>
+          <p> <strong>MOBILE : 8200424499</strong></p>
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+        </div>
+      </div>
+
+      <div class="member-card">
+        <img src="dix.jpg" alt="Member 2">
+        <div class="member-details">
+          <h3>Dixit A. Nandaniya</h3>
+        
+          <p> <strong>ENROLL : 23BECE30486</strong></p>
+          <p> <strong>MOBILE : 9974040058</strong></p>
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM : <strong>4th</strong> </p>
+
+        </div>
+      </div>
+
+      <div class="member-card">
+        <img src="kr.jpg" alt="Member 2">
+        <div class="member-details">
+          <h4>Krupa R. Chaudhary</h4>
+          
+          <p><strong>ENROLL : 23BECE30419</strong></p>
+          <p><strong>MOBILE : 9510752420</strong></p>
+          <p>BRANCH : <strong>CE</strong> </p>
+          <p>SEM :<strong>4th</strong> </p>
+
+        </div>
+      </div> -->
+
+
+
+
+
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 X-AICodex. DHRUVIL . All Rights Reserved. </p>
+  </footer>
+</body>
+
+</html>

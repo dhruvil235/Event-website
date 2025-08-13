@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X-AICodeX - Event</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #000000, #1a1a2e);
+      color: #f4f4f4;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #0f0c29, #302b63, #2575fc);
+      color: white;
+      padding: 1rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 2px solid #3a3a3a;
+      /* border-bottom: 4px solid #f1c40f; */
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+      animation: rotate 15s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      animation: fadeInDown 2s ease;
+      color: #00aaff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      animation: fadeInUp 2s ease;
+      color: #ddd;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #00aaff;
+      padding: 0.8rem 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #24243e;
+      color: #fff;
+      border-radius: 20px;
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: url('https://source.unsplash.com/1600x900/?coding,technology') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1;
+    }
+
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      animation: zoomIn 2s ease;
+      color: #00aaff;
+      margin-top: -5rem;
+    }
+    .hero h3 {
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      font-size: 2rem;
+      animation: zoomIn 2s ease;
+      color: #00aaff;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      animation: fadeIn 3s ease;
+      color: #d1d1d1;
+    }
+    
+
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Content Section */
+    .content {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 1rem 2rem;
+    }
+
+    .content h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #00aaff;
+      position: relative;
+    }
+
+    .content h2::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: #2575fc;
+      display: block;
+      margin: 0.5rem auto;
+    }
+
+    /* Parallax Effect for Events */
+    .parallax {
+      background: url('https://source.unsplash.com/1600x900/?cybersecurity,event') no-repeat center center/cover;
+      height: 300px;
+      position: relative;
+      z-index: 1;
+      margin: 3rem 0;
+    }
+
+    .parallax::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2;
+    }
+
+    /* Events Section */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      animation: slideIn 2s ease-out;
+    }
+
+    .event-card {
+      background: #1f1f1f;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+    }
+
+    .event-card h3 {
+      font-size: 1.8rem;
+      color: #00aaff;
+    }
+
+    .event-card p {
+      color: #b8c6db;
+      margin: 0.5rem 0;
+    }
+
+    .event-card .event-date {
+      margin-top: 1rem;
+      color: #00aaff;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: #101010;
+      color: #b8c6db;
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Animation for Events */
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+   .rule-box {
+  position: relative;
+  z-index: 10;
+}
+
+
+.rule-box:hover {
+  background: #00aaff !important; 
+  color: white !important; 
+  transform: scale(1.05) !important;
+  border: 2px solid #0077cc !important; 
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.8) !important;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1> <a href="INDEX.html" style="color: inherit; text-decoration: none;" >RULES of X-AICodeX</a> </h1>
+  </header>
+
+  <section class="hero">
+    <h1>RULES :-</h1>
+    
+    <div class="rule-box">
+      <h3> Round 1 Rule: </h3>
+      <p> Two teams compete at a time. Participants must generate the provided image using only five prompts within 5 minutes. Teams with the most accurate matches qualify for Round 2.</p>
+    </div>
+  
+    <div class="rule-box">
+      <h3>Round 2 Rule: </h3>
+      <p>Qualified teams will answer questions ranging from easy to hard. Correct answers allow a team to move a disk in the Tower of Hanoi, while wrong answers pass the chance to the opposing team.</p>
+    </div>
+  
+    <div class="rule-box">
+      <h3>Winner Rule: </h3>
+      <p> The team that completes the Tower of Hanoi in the shortest time wins.</p>
+    </div>
+  </section>
+  
+
+  <footer>
+    <p>&copy; 2025 X-AICodex. DHRUVIL . All Rights Reserved. </p>
+  </footer>
+
+</body>
+
+           
+</html>
